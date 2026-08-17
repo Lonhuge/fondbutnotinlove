@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>IMPRESSUM / DATENSCHUTZ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="IMPRESSUM / DATENSCHUTZ">
+<meta property="og:type" content="website">
+<style>
+@font-face {
+  font-family: "Bernoru";
+  src: url("../fonts/bernoru-blackultraexpanded.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Colours are inverted from the home page:
+     ground  rgb(173, 250, 72) = #ADFA48
+     display rgb(255, 50, 75)  = #FF324B
+     body    rgb(0, 0, 0)
+
+   Reading text is a FIXED pixel size and rewraps freely; the page grows to
+   fit. Display type stays proportional so it keeps filling the width. At
+   1280px every value below resolves to the live page's own metrics.
+   -------------------------------------------------------------------------- */
+:root {
+  --green: #ADFA48;
+  --red:   #FF324B;
+
+  --pad: clamp(16px, 2.5vw, 40px);
+  --content: calc(100vw - 2 * var(--pad));
+
+  /* Fixed sizes that rewrap. They fall back to scaling only in the extreme
+     case where a single unbreakable word no longer fits the padded content
+     width — "DATENSCHUTZ" (12.986em) and "BACK" set those thresholds. */
+  --title: min(95.86px, calc(var(--content) / 12.986));
+  --back:  min(119.9px, calc(var(--content) * 0.1635));
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  background: var(--green);
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Bernoru", "Arial Black", Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  padding: 3.61px var(--pad) 0;
+  overflow: hidden;
+  background: var(--green);
+}
+
+/* ---- display type ------------------------------------------------------- */
+
+/* Widths below are percentages of the padded content box, chosen so the text
+   column and GO BACK keep the live page's own measures (1103.15 / 906.43 at
+   1280) while sitting inside the new gutter. */
+.title {
+  width: 100%;
+  font-size: var(--title);
+  line-height: 0.684311;      /* 65.6 / 95.86 — tighter than the type is tall */
+  text-align: left;
+  color: var(--red);
+}
+
+.back {
+  /* In flow the line box rounds 1px high vs the live page; nudge it back. */
+  position: relative;
+  top: 1px;
+  margin: 32.92px auto 0;
+  width: 74.5419%;
+  font-size: var(--back);
+  line-height: 1.398665;      /* 167.7 / 119.9 */
+  text-align: center;
+  color: var(--red);
+}
+
+/* 119.9px exactly fills the 906.43px box at 1280 — any larger and it wraps. */
+.back a { color: var(--red); text-decoration: underline; }
+
+/* ---- body copy ---------------------------------------------------------- */
+
+/* The live page's body face is a Canva webfont served under an obfuscated
+   name, so the exact typeface is unknown. It advances 8.023px per character
+   at the rendered size — a 0.6em monospace advance at 13.37px — so any normal
+   monospace reproduces the character grid and the line breaks exactly. */
+.doc {
+  margin-top: 60.4px;
+  margin-left: 4.6382%;
+  width: 90.7196%;
+  font-family: ui-monospace, Menlo, "Courier New", monospace;
+  font-size: 13.37px;
+  line-height: 35.6px;
+  text-align: justify;
+  color: #000;
+}
+
+.doc .h {
+  font-size: 15.97px;
+  line-height: 42.2px;
+}
+
+.doc .gap  { margin-top: 35.6px; }
+.doc .gap2 { margin-top: 71.2px; }
+
+.doc a { color: var(--red); text-decoration: underline; }
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- soft hyphen lets DATEN-SCHUTZ break as a German compound when narrow -->
+  <p class="title">IMPRESSUM/<br>DATEN&shy;SCHUTZ</p>
+
+  <div class="doc">
+
+    <p>Angaben gemäß § 5 TMG</p>
+
+    <p class="gap">FOND BUT NOT IN LOVE GbR</p>
+    <p>Rolandstr. 10b</p>
+    <p>50677 Köln</p>
+
+    <p class="gap">Vertreten durch die Gesellschafter:</p>
+    <p>Leon Laguna de la Vera, Julien Schenk </p>
+
+    <p class="gap">Kontakt:</p>
+    <p>E-Mail: leon@fondbutnotinlove.de</p>
+    <p>Telefon: 0049 171 4983 583</p>
+
+    <p class="h gap">Datenschutzerklärung</p>
+    <p class="h">1. Datenschutz auf einen Blick</p>
+
+    <p class="h gap">Allgemeine Hinweise</p>
+    <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie der folgenden Datenschutzerklärung.</p>
+
+    <p class="h gap">Datenerfassung auf dieser Website</p>
+    <p class="h">Wer ist verantwortlich für die Datenerfassung auf dieser Website?</p>
+    <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt &bdquo;Hinweis zur Verantwortlichen Stelle&ldquo; entnehmen.</p>
+
+    <p class="h gap">Wie erfassen wir Ihre Daten?</p>
+    <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen (z. B. über ein Kontaktformular).</p>
+    <p>Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem, Uhrzeit des Seitenaufrufs). Die Erfassung erfolgt automatisch beim Besuch der Website.</p>
+
+    <p class="h gap">Wofür nutzen wir Ihre Daten?</p>
+    <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse des Nutzerverhaltens verwendet werden. Sofern über die Website Verträge geschlossen oder angebahnt werden können, werden die übermittelten Daten auch für Vertragsangebote, Bestellungen oder sonstige Auftragsanfragen verarbeitet.</p>
+    <p>Welche Rechte haben Sie bezüglich Ihrer Daten?</p>
+    <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht auf Berichtigung oder Löschung dieser Daten. Eine erteilte Einwilligung können Sie jederzeit widerrufen. Ihnen steht zudem ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
+
+    <p class="h gap">2. Hosting</p>
+    <p class="h">IONOS</p>
+    <p>Anbieter: IONOS SE, Elgendorfer Str. 57, 56410 Montabaur</p>
+    <p>Wenn Sie unsere Website besuchen, erfasst IONOS verschiedene Logfiles inklusive Ihrer IP-Adresse. Details finden Sie unter:</p>
+    <p> <a href="https://www.ionos.de/terms-gtc/terms-privacy">https://www.ionos.de/terms-gtc/terms-privacy</a></p>
+
+    <p class="h gap">CANVA</p>
+    <p>Zur gestalterischen Darstellung unserer Webseite verwenden wir den Dienst "Canva". Canva ist ein Dienst der Canva Pty Ltd, Level 1, 110 Kippax St, Surry Hills NSW 2010, Australien. Die Datenschutzinformationen von Canva können Sie unter <a href="http://www.canva.com/de_de/richtlinien/privacy-policy">www.canva.com/de_de/richtlinien/privacy-policy</a> einsehen. Die erhobenen Daten werden zu keinen anderen Zwecken genutzt.</p>
+
+    <p class="h gap2">3. Allgemeine Hinweise und Pflichtinformationen</p>
+    <p>Verantwortliche Stelle</p>
+    <p>FOND BUT NOT IN LOVE GbR</p>
+    <p>Balthasarstraße 83</p>
+    <p>50670 Köln</p>
+    <p>Vertreten durch: Leon Laguna de la Vera, Julien Schenk</p>
+    <p>Telefon: 0151 64933110</p>
+    <p>E-Mail: <a href="mailto:julien@fondbutnotinlove.de">julien@fondbutnotinlove.de</a></p>
+
+    <p class="h gap">Speicherdauer</p>
+    <p>Ihre personenbezogenen Daten verbleiben bei uns, bis der Zweck für die Datenverarbeitung entfällt oder Sie eine Löschung verlangen, es sei denn gesetzliche Vorgaben stehen dem entgegen.</p>
+    <p>Rechtsgrundlagen der Verarbeitung</p>
+    <p>Einwilligung: Art. 6 Abs. 1 lit. a DSGVO</p>
+    <p>Vertragserfüllung: Art. 6 Abs. 1 lit. b DSGVO</p>
+    <p>Rechtliche Verpflichtung: Art. 6 Abs. 1 lit. c DSGVO</p>
+    <p>Berechtigtes Interesse: Art. 6 Abs. 1 lit. f DSGVO</p>
+
+    <p class="h gap">Empfänger von Daten</p>
+    <p>Externe Dienstleister nur bei rechtlicher Grundlage, z. B. im Rahmen von Verträgen, gesetzlicher Verpflichtung oder berechtigtem Interesse.</p>
+    <p>Widerruf Ihrer Einwilligung</p>
+    <p>Sie können eine erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bisherigen Verarbeitung bleibt davon unberührt.</p>
+    <p>Widerspruchsrecht nach Art. 21 DSGVO</p>
+    <p>Sie können jederzeit der Verarbeitung widersprechen, wenn sie auf Art. 6 Abs. 1 lit. e oder f DSGVO beruht, insbesondere bei Direktwerbung.</p>
+    <p>Beschwerderecht bei der Aufsichtsbehörde</p>
+    <p>Sie haben ein Recht auf Beschwerde bei der Datenschutzaufsicht Ihres Bundeslandes.</p>
+
+    <p class="h gap">Weitere Rechte</p>
+    <p>Auskunft</p>
+    <p>Berichtigung</p>
+    <p>Löschung</p>
+    <p>Einschränkung der Verarbeitung</p>
+    <p>Datenübertragbarkeit</p>
+
+    <p class="h gap">4. Datenerfassung auf dieser Website</p>
+    <p class="h">Cookies</p>
+    <p>Diese Website verwendet Cookies. Einige sind technisch notwendig (z. B. für Warenkörbe), andere dienen Analyse- oder Marketingzwecken.</p>
+    <p>Rechtsgrundlage für notwendige Cookies: Art. 6 Abs. 1 lit. f DSGVO.</p>
+    <p>Für andere Cookies ist eine Einwilligung erforderlich: Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG.</p>
+    <p>Sie können Ihren Browser so einstellen, dass Sie über Cookies informiert werden und einzelne ablehnen.</p>
+
+  </div>
+
+  <!-- relative, so it returns to this copy rather than the live site (the
+       Canva original hard-coded http://fondbutnotinlove.de here) and resolves
+       both under a GitHub Pages project path and at a domain root -->
+  <p class="back">GO <a href="../">BACK</a></p>
+
+</div>
+
+</body>
+</html>

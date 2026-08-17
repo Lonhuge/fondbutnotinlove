@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FOND BUT NOT IN LOVE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="FOND BUT NOT IN LOVE">
+<meta property="og:type" content="website">
+<style>
+@font-face {
+  font-family: "Bernoru";
+  src: url("fonts/bernoru-blackultraexpanded.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Colours (sampled from the live site)
+     red   rgb(255, 50, 75)  = #FF324B
+     green rgb(173, 250, 72) = #ADFA48
+
+   Reading text is set at a FIXED pixel size and simply rewraps as the window
+   changes — it is never scaled. Display type (the wordmark) and the heart stay
+   proportional to the viewport, because filling the width edge to edge is what
+   they are for. At 1280px every value below resolves to the original's.
+   -------------------------------------------------------------------------- */
+:root {
+  --red:   #FF324B;
+  --green: #ADFA48;
+
+  --pad: clamp(16px, 2.5vw, 40px);
+  --content: calc(100vw - 2 * var(--pad));
+
+  /* The wordmark is a FIXED 64.9714px and rewraps like everything else. It
+     only scales in the extreme case where its longest word ("LOVE", 4.57em)
+     can no longer fit the padded content width. */
+  --wm: min(64.9714px, calc(var(--content) * 0.2188));
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  background: var(--red);
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Bernoru", "Arial Black", Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+section { position: relative; width: 100%; background: var(--red); }
+
+/* ---- hero --------------------------------------------------------------- */
+
+.hero {
+  min-height: 991.391px;
+  padding-inline: var(--pad);
+  overflow: hidden;
+}
+
+/* The green sits behind the words themselves, not across the whole header, so
+   it is painted on an inline span and hugs each line's text. `clone` gives
+   every wrapped line its own background box instead of one box spanning all
+   of them.
+
+   line-height equals the height of that inline background box, which makes
+   consecutive rows touch with zero gap. Bernoru's metrics (ascent 650 +
+   descent 100 over 700 upm) predict 1.071429em, but the browser rounds ascent
+   and descent to whole pixels, so the box measures 70px at 64.9714px —
+   1.07741em. That measured ratio is the one that actually closes the gap. */
+.wordmark {
+  font-size: var(--wm);
+  line-height: calc(1.07741 * var(--wm));
+  text-align: left;
+  color: var(--red);
+}
+
+.wordmark span {
+  background: var(--green);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* 2.485px left / 1278.34px wide at 1280 — effectively full bleed. */
+.copy {
+  margin-top: 12.64px;
+  color: var(--green);
+  text-align: justify;
+}
+
+.copy .lead {
+  font-size: 19.9908px;
+  line-height: 27.6962px;
+}
+
+.copy .body,
+.copy .spacer {
+  font-size: 8.74616px;
+  line-height: 11.66155px;
+}
+
+/* ---- emblem ------------------------------------------------------------- */
+
+.emblem {
+  padding: 207.135px var(--pad) 69.98px;
+}
+
+.heart {
+  display: block;
+  width: 61%;
+  height: auto;
+  aspect-ratio: 303.075 / 256;
+  margin-inline: auto;
+  fill: var(--green);
+}
+
+.legal {
+  margin-top: 118.4px;
+  font-size: 13.7434px;
+  line-height: 18.741px;
+  text-align: center;
+}
+
+.legal a { color: var(--green); }
+</style>
+</head>
+
+<body>
+
+<main>
+
+  <section class="hero">
+
+    <h1 class="wordmark"><span>FOND BUT NOT IN LOVE</span></h1>
+
+    <div class="copy">
+      <p class="lead">FOND BUT NOT IN LOVE IS A LABEL AND MANAGEMENT SERVICE. ECHOES RETURN TO SENDER.</p>
+      <p class="body">THE DARK FORGOT IT HAD TO WAKE, AND EVERYTHING SMILED LIKE A CAT THAT FORGOT IT HAD TO EAT. WE DRIFTED, DIDN&rsquo;T WE? IN AMARSH OR MADDOW MAYBE, PAST ALL THE SHOULD-HAVE-BEENS, WITH THAT CERTAIN HOPE IN YOUR EYES THAT MAKES YOU THINK THERE STILL IS SOMETHING THAT IS WORTH KEEPING, BUT NEVER THE LESS, PLINK GOES THE JELLYBEAN, SIDEWAYS AND SLOW, FAMILIAR LIKE A MISPLACED UMBRELLA, NEVER MINE, ALWAYS NEAR. YES, NO, ALMOST THERE. </p>
+      <div class="spacer"><br></div>
+      <p class="body">CUPBOARD OF WHAT-IFS, MISS ME WITH A MAYBE, I AM A BLUR, SPOON-FED IN RECURRING ECHOES, DUST FOLDED UP INTO FORGET-ME-NOTS. LAUGHTER BUT IT STUCK IN OUR SHOES. <span style="text-decoration: underline;">WE ALMOST WERE SOMETHING, WEREN&rsquo;T WE?</span> JIGSAW, JIGSAW, FEELINGS WITH THE CORNERS RUBBED OFF. JIGSAW, JIGSAW, WE FIT WHERE IT CRACKED. FOG THE MIRROR, KNOCK AT MY DOOR. YOU HELD ME LIKE A HABIT &mdash; AND STILL THE CAT WAITED, EXPECTING SOMETHING. FOND BUT NOT IN LOVE. FOND BUT NOT IN LOVE. </p>
+    </div>
+
+  </section>
+
+  <section class="emblem">
+
+    <svg class="heart" viewBox="0 0 303.075 256" aria-hidden="true" focusable="false">
+      <path d="M12.015279526612996,40.87561142857143C-13.227242060349951,79.95702857142858 4.753878671152227,117.99634285714285 26.51023619127718,138.1856L153.71791488645917,256L278.24067761624406,138.60662857142856C298.47569167367527,116.88822857142856 306.4001621460366,93.85097142857144 301.92412070167,68.19885714285714C295.9738995073891,32.7136 265.68199348792496,5.182720000000001 228.26166091553523,1.2513188571428573C205.31128129280302,-1.237398905811987 183.140847098402,5.1356342857142865 165.8376133365373,19.016045714285717C161.18019786134803,22.75072 157.01764757899792,26.925942857142854 153.38974112699745,31.46409142857143C149.08512428210977,26.29705142857143 144.03797287035923,21.57046857142857 138.32926483239214,17.38144C118.43142208338337,2.783428571428572 93.10284820377265,-3.2868919679172897 68.77347581400936,1.4951268571428573C45.73070557010692,5.792228571428572 25.047471507869755,20.140891428571432 12.015279526612996,40.87561142857143Z"/>
+    </svg>
+
+    <!-- relative, so it resolves both under a GitHub Pages project path and
+         at a domain root -->
+    <p class="legal"><a href="impressum/">IMPRESSUM / DATENSCHUTZ</a></p>
+
+  </section>
+
+</main>
+
+</body>
+</html>
