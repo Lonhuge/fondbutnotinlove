@@ -23,26 +23,22 @@
      red   rgb(255, 50, 75)  = #FF324B
      green rgb(173, 250, 72) = #ADFA48
 
-   The whole composition is locked to one reference layout: the 930px-wide
-   window it was art-directed in. `--u` is one pixel of that reference, so every
-   size below is a plain reference-pixel number and the page renders at the same
-   proportions at any window size — the headline always breaks the same way.
+   Reading text is set at a FIXED pixel size and rewraps as the window changes;
+   it is never scaled. Only the wordmark scales, and only enough to keep its
+   longest word ("LOVE") on screen.
 
-     0.1075269vw  = 100/930, i.e. scale to the window's width
-     0.2582vh     = 100/387.27, where 387.27 is the reference height of
-                    everything in the hero, so a short window shrinks the type
-                    rather than pushing text below the fold
-
-   Taking the smaller of the two means all the text is always visible.
+   A previous version scaled the whole page off a viewport-derived --u token.
+   It measured correctly in Chrome but rendered wrong in Safari twice, so it
+   was reverted. Keep viewport maths out of this file.
    -------------------------------------------------------------------------- */
 :root {
   --red:   #FF324B;
   --green: #ADFA48;
 
-  --u: min(0.1075269vw, 0.2582vh);
+  --pad: clamp(16px, 2.5vw, 40px);
+  --content: calc(100vw - 2 * var(--pad));
 
-  --pad: calc(23.25 * var(--u));
-  --wm:  calc(64.9714 * var(--u));
+  --wm: min(64.9714px, calc(var(--content) * 0.2188));
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -65,7 +61,7 @@ section { position: relative; width: 100%; background: var(--red); }
 /* ---- hero --------------------------------------------------------------- */
 
 .hero {
-  min-height: 100svh;         /* the first screen is exactly one screen */
+  min-height: 991.391px;
   padding: var(--pad);        /* same gutter above the headline as at the sides */
   padding-bottom: 0;
   overflow: hidden;
@@ -99,31 +95,31 @@ section { position: relative; width: 100%; background: var(--red); }
 }
 
 .copy {
-  margin-top: calc(12.64 * var(--u));
+  margin-top: 12.64px;
   color: var(--green);
   text-align: justify;
 }
 
 .copy .lead {
-  font-size:   calc(19.9908 * var(--u));
+  font-size: 19.9908px;
   line-height: 1.385447;      /* 27.6962 / 19.9908 */
 }
 
 .copy .body,
 .copy .spacer {
-  font-size:   calc(8.74616 * var(--u));
+  font-size: 8.74616px;
   line-height: 1.333333;      /* 11.66155 / 8.74616 */
 }
 
 /* ---- emblem ------------------------------------------------------------- */
 
 .emblem {
-  padding: calc(207.135 * var(--u)) var(--pad) calc(69.98 * var(--u));
+  padding: 207.135px var(--pad) 69.98px;
 }
 
 .heart {
   display: block;
-  width: calc(538.93 * var(--u));
+  width: 61%;
   height: auto;
   aspect-ratio: 303.075 / 256;
   margin-inline: auto;
@@ -131,8 +127,8 @@ section { position: relative; width: 100%; background: var(--red); }
 }
 
 .legal {
-  margin-top:  calc(118.4 * var(--u));
-  font-size:   calc(13.7434 * var(--u));
+  margin-top: 118.4px;
+  font-size: 13.7434px;
   line-height: 1.363647;      /* 18.741 / 13.7434 */
   text-align: center;
 }
