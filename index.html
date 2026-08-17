@@ -23,22 +23,26 @@
      red   rgb(255, 50, 75)  = #FF324B
      green rgb(173, 250, 72) = #ADFA48
 
-   Reading text is set at a FIXED pixel size and simply rewraps as the window
-   changes — it is never scaled. Display type (the wordmark) and the heart stay
-   proportional to the viewport, because filling the width edge to edge is what
-   they are for. At 1280px every value below resolves to the original's.
+   The whole composition is locked to one reference layout: the 930px-wide
+   window it was art-directed in. `--u` is one pixel of that reference, so every
+   size below is a plain reference-pixel number and the page renders at the same
+   proportions at any window size — the headline always breaks the same way.
+
+     0.1075269vw  = 100/930, i.e. scale to the window's width
+     0.2582vh     = 100/387.27, where 387.27 is the reference height of
+                    everything in the hero, so a short window shrinks the type
+                    rather than pushing text below the fold
+
+   Taking the smaller of the two means all the text is always visible.
    -------------------------------------------------------------------------- */
 :root {
   --red:   #FF324B;
   --green: #ADFA48;
 
-  --pad: clamp(16px, 2.5vw, 40px);
-  --content: calc(100vw - 2 * var(--pad));
+  --u: min(0.1075269vw, 0.2582vh);
 
-  /* The wordmark is a FIXED 64.9714px and rewraps like everything else. It
-     only scales in the extreme case where its longest word ("LOVE", 4.57em)
-     can no longer fit the padded content width. */
-  --wm: min(64.9714px, calc(var(--content) * 0.2188));
+  --pad: calc(23.25 * var(--u));
+  --wm:  calc(64.9714 * var(--u));
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -61,7 +65,7 @@ section { position: relative; width: 100%; background: var(--red); }
 /* ---- hero --------------------------------------------------------------- */
 
 .hero {
-  min-height: 991.391px;
+  min-height: 100svh;         /* the first screen is exactly one screen */
   padding: var(--pad);        /* same gutter above the headline as at the sides */
   padding-bottom: 0;
   overflow: hidden;
@@ -90,33 +94,32 @@ section { position: relative; width: 100%; background: var(--red); }
   box-decoration-break: clone;
 }
 
-/* 2.485px left / 1278.34px wide at 1280 — effectively full bleed. */
 .copy {
-  margin-top: 12.64px;
+  margin-top: calc(12.64 * var(--u));
   color: var(--green);
   text-align: justify;
 }
 
 .copy .lead {
-  font-size: 19.9908px;
-  line-height: 27.6962px;
+  font-size:   calc(19.9908 * var(--u));
+  line-height: calc(27.6962 * var(--u));
 }
 
 .copy .body,
 .copy .spacer {
-  font-size: 8.74616px;
-  line-height: 11.66155px;
+  font-size:   calc(8.74616 * var(--u));
+  line-height: calc(11.66155 * var(--u));
 }
 
 /* ---- emblem ------------------------------------------------------------- */
 
 .emblem {
-  padding: 207.135px var(--pad) 69.98px;
+  padding: calc(207.135 * var(--u)) var(--pad) calc(69.98 * var(--u));
 }
 
 .heart {
   display: block;
-  width: 61%;
+  width: calc(538.93 * var(--u));
   height: auto;
   aspect-ratio: 303.075 / 256;
   margin-inline: auto;
@@ -124,9 +127,9 @@ section { position: relative; width: 100%; background: var(--red); }
 }
 
 .legal {
-  margin-top: 118.4px;
-  font-size: 13.7434px;
-  line-height: 18.741px;
+  margin-top:  calc(118.4 * var(--u));
+  font-size:   calc(13.7434 * var(--u));
+  line-height: calc(18.741 * var(--u));
   text-align: center;
 }
 
