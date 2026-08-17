@@ -81,9 +81,13 @@ section { position: relative; width: 100%; background: var(--red); }
    descent 100 over 700 upm) predict 1.071429em, but the browser rounds ascent
    and descent to whole pixels, so the box measures 70px at 64.9714px —
    1.07741em. That measured ratio is the one that actually closes the gap. */
+/* line-height is always a UNITLESS ratio here, never calc(). It accepts both a
+   number and a length, and WebKit mishandles that ambiguity inside calc() —
+   the line boxes collapse and the rows overlap. A plain ratio scales off
+   font-size on its own and needs no calc at all. */
 .wordmark {
   font-size: var(--wm);
-  line-height: calc(1.07741 * var(--wm));
+  line-height: 1.07741;
   text-align: left;
   color: var(--red);
 }
@@ -102,13 +106,13 @@ section { position: relative; width: 100%; background: var(--red); }
 
 .copy .lead {
   font-size:   calc(19.9908 * var(--u));
-  line-height: calc(27.6962 * var(--u));
+  line-height: 1.385447;      /* 27.6962 / 19.9908 */
 }
 
 .copy .body,
 .copy .spacer {
   font-size:   calc(8.74616 * var(--u));
-  line-height: calc(11.66155 * var(--u));
+  line-height: 1.333333;      /* 11.66155 / 8.74616 */
 }
 
 /* ---- emblem ------------------------------------------------------------- */
@@ -129,7 +133,7 @@ section { position: relative; width: 100%; background: var(--red); }
 .legal {
   margin-top:  calc(118.4 * var(--u));
   font-size:   calc(13.7434 * var(--u));
-  line-height: calc(18.741 * var(--u));
+  line-height: 1.363647;      /* 18.741 / 13.7434 */
   text-align: center;
 }
 
