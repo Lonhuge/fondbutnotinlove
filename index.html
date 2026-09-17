@@ -94,8 +94,14 @@ section { position: relative; width: 100%; background: var(--red); }
   box-decoration-break: clone;
 }
 
+/* Die Überschrift diktiert die Satzbreite. Der Wert hier gilt nur ohne
+   JavaScript: 1278.05px ist die Breite von "FOND BUT NOT IN LOVE" bei
+   64.9714px, also der einzeilige Fall. Sobald die Überschrift umbricht, kennt
+   CSS die Breite der längsten Zeile nicht — das misst das Skript am Seitenende
+   und schreibt es als max-width hierher. */
 .copy {
   margin-top: 12.64px;
+  max-width: 1278.05px;
   color: var(--green);
   text-align: justify;
 }
@@ -167,6 +173,33 @@ section { position: relative; width: 100%; background: var(--red); }
   </section>
 
 </main>
+
+<!-- Bindet das rechte Ende des Fließtextes an die längste gerenderte Zeile der
+     Überschrift. CSS kann eine Textbreite nicht auslesen, deshalb hier gemessen:
+     getClientRects() liefert pro umbrochener Zeile ein Rechteck. Läuft in jeder
+     Engine gleich, anders als die verworfene Viewport-Rechnerei. Ohne
+     JavaScript bleibt die max-width aus dem Stylesheet stehen. -->
+<script>
+(function () {
+  var span = document.querySelector('.wordmark span');
+  var copy = document.querySelector('.copy');
+  if (!span || !copy) return;
+
+  function fit() {
+    var rects = span.getClientRects(), w = 0;
+    for (var i = 0; i < rects.length; i++) {
+      if (rects[i].width > w) w = rects[i].width;
+    }
+    if (w) copy.style.maxWidth = w + 'px';
+  }
+
+  fit();
+  addEventListener('resize', fit);
+  addEventListener('orientationchange', fit);
+  // Bernoru bestimmt die Breite — nach dem Laden der Schrift neu messen.
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
 
 </body>
 </html>
